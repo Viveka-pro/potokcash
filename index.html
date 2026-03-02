@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Меркурий Cashflow | Новая реальность</title>
-    <!-- Шрифты для усиления атмосферы -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>Измени свою жизнь к лучшему</title>
     <style>
         * {
             margin: 0;
@@ -15,492 +11,123 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0b0c0e 0%, #1a1e24 100%);
-            color: #e0e0e0;
-            line-height: 1.5;
-            overflow-x: hidden;
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Фиксируем экран как на картинке */
         }
 
-        /* Маска боли и перехода */
-        .pain-overlay {
+        /* Фоновое изображение из вашего файла */
+        .background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-            pointer-events: none;
-            z-index: 1;
+            background: url('hero.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Секция 1: Боль и дефицит */
-        .pain-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        .pain-content {
-            max-width: 700px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 70, 70, 0.15);
-            color: #ff6b6b;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            border-radius: 100px;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            margin-bottom: 30px;
-            backdrop-filter: blur(5px);
-        }
-
-        h1 {
-            font-size: clamp(2.8rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            background: linear-gradient(to right, #f0f0f0, #b0b0b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .pain-points {
-            margin: 40px 0;
-        }
-
-        .pain-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            font-weight: 300;
-            border-left: 3px solid #ff4545;
-            padding-left: 20px;
-            background: linear-gradient(90deg, rgba(255, 70, 70, 0.1) 0%, rgba(255, 70, 70, 0) 90%);
-        }
-
-        .pain-item svg {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: #ff6b6b;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .pain-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            padding: 20px 25px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.15);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ffaa33;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #aaa;
-        }
-
-        /* Разрыв / трансформация */
-        .tear-line {
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ffaa33, #ffd700, #ffaa33, transparent);
-            margin: 80px 0;
-            opacity: 0.6;
-        }
-
-        /* Секция 2: Свет и решение */
-        .solution-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 60px 0;
-        }
-
-        .solution-grid {
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 60px;
+            justify-content: flex-start;
+            padding: 5% 10%;
         }
 
-        .solution-header {
-            text-align: center;
+        /* Заголовок с желтым акцентом */
+        .header-title {
+            font-size: 3.5vw;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
         }
 
-        .solution-badge {
-            background: rgba(255, 215, 0, 0.2);
-            color: #ffd966;
-            border: 1px solid rgba(255, 215, 0, 0.5);
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 100px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+        .header-title span {
+            color: #FFD700; /* Золотисто-желтый */
         }
 
-        h2 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            background: linear-gradient(to right, #fff8e7, #ffd966);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
+        /* Подзаголовок (темный текст) */
+        .header-subtitle {
+            font-size: 2.8vw;
+            color: #1a2a40; /* Темно-синий/черный */
+            font-weight: bold;
+            margin-bottom: 40px;
         }
 
-        .subhead {
-            font-size: 1.4rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .feature-card {
-            background: rgba(20, 25, 30, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 40px;
-            padding: 40px 30px;
-            transition: transform 0.3s ease, border-color 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffd966;
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
-        }
-
-        .feature-icon {
-            background: rgba(255, 215, 0, 0.1);
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            display: flex;
+        /* Кнопка Telegram */
+        .tg-button {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            border: 2px dashed #ffd966;
+            background: linear-gradient(to bottom, #3a90d4, #1e70b3);
+            border: 2px solid #1a65a3;
+            border-radius: 15px;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: white;
+            width: fit-content;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            margin-top: auto;
+            margin-bottom: 15vh; /* Позиционируем кнопку ниже */
         }
 
-        .feature-icon svg {
+        .tg-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .tg-icon {
+            background: white;
+            border-radius: 50%;
             width: 45px;
             height: 45px;
-            stroke: #ffd966;
-            fill: none;
-            stroke-width: 1.8;
-        }
-
-        .feature-card h3 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #ffd966;
-            margin-bottom: 20px;
-        }
-
-        .feature-card p {
-            font-size: 1.1rem;
-            color: #bbb;
-            margin-bottom: 30px;
-        }
-
-        .daily-highlight {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #fff0b5;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 215, 0, 0.6);
-            margin-top: 20px;
-        }
-
-        .cta-block {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 30px;
-            margin-top: 50px;
+            margin-right: 15px;
         }
 
-        .cta-button {
-            background: linear-gradient(135deg, #f0b429 0%, #f5d742 100%);
-            color: #0a0c10;
-            border: none;
-            padding: 25px 70px;
-            border-radius: 70px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 10px 30px rgba(255, 200, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .tg-icon svg {
+            width: 25px;
+            height: 25px;
+            fill: #1e70b3;
+            margin-right: 3px; /* Компенсация хвоста самолетика */
         }
 
-        .cta-button:hover {
-            background: linear-gradient(135deg, #ffc857 0%, #ffe17e 100%);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px #ffd96680;
+        .tg-text {
+            font-size: 1.8vw;
+            font-weight: 500;
         }
 
-        .cta-note {
-            color: #aaa;
-            font-size: 1rem;
-            border-bottom: 1px dashed #ffd966;
-        }
-
-        .testimonial {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 60px;
-            padding: 40px;
-            border: 1px solid #3a3a3a;
-            font-style: italic;
-            margin-top: 60px;
-        }
-
-        .testimonial p {
-            font-size: 1.3rem;
-            color: #ddd;
-        }
-
-        .testimonial-author {
-            margin-top: 20px;
-            color: #ffd966;
-            font-weight: 700;
-        }
-
-        /* Атмосферные элементы */
-        .glow {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 200, 100, 0.15) 0%, transparent 70%);
-            top: 50%;
-            right: -200px;
-            transform: translateY(-50%);
-            z-index: 0;
-            filter: blur(60px);
-        }
-
-        .glow-left {
-            left: -200px;
-            top: 20%;
-            background: radial-gradient(circle, rgba(100, 150, 255, 0.1) 0%, transparent 70%);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #555;
-            border-top: 1px solid #222;
-            margin-top: 40px;
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            .header-title { font-size: 7vw; }
+            .header-subtitle { font-size: 5vw; }
+            .tg-text { font-size: 4vw; }
+            .container { padding: 10% 5%; }
         }
     </style>
 </head>
 <body>
-    <div class="pain-overlay"></div>
 
-    <!-- Фоновое свечение -->
-    <div class="glow"></div>
-    <div class="glow glow-left"></div>
+    <div class="background"></div>
 
-    <!-- СЕКЦИЯ 1: БОЛЬ И НЕДОСТАТОК -->
-    <section class="pain-section">
-        <div class="container">
-            <div class="pain-content">
-                <span class="badge">⚠️ КРИЗИС РЕАЛЬНОСТИ ⚠️</span>
-                <h1>Денег нет.<br>Их не будет?</h1>
-                
-                <div class="pain-points">
-                    <div class="pain-item">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2v20M12 6l4-4-4-4M12 22l-4-4 4-4"/>
-                        </svg>
-                        <span>Ты работаешь больше — получаешь меньше</span>
-                    </div>
-                    <div class="pain-item">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                        <span>Время уходит, а счета копятся</span>
-                    </div>
-                    <div class="pain-item">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M4 4 L20 20 M20 4 L4 20"/>
-                        </svg>
-                        <span>Кредиты, долги, невозможность дышать</span>
-                    </div>
-                </div>
-
-                <div class="pain-stats">
-                    <div class="stat">
-                        <div class="stat-number">87%</div>
-                        <div class="stat-label">живут от зарплаты до зарплаты</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">2×</div>
-                        <div class="stat-label">рост цен за последний год</div>
-                    </div>
-                </div>
-
-                <!-- Усилитель боли: текст-погружение -->
-                <div style="margin-top: 60px; font-size: 1.2rem; color: #aaa; border-left: 4px solid #444; padding-left: 25px;">
-                    <p>«Каждое утро ты просыпаешься с мыслью: где взять? Как протянуть до зарплаты? Отказать себе в самом необходимом… Сколько ещё можно терпеть эту удавку?»</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Разрыв / переход -->
     <div class="container">
-        <div class="tear-line"></div>
+        <h1 class="header-title">Ты работаешь больше — <span>получаешь меньше?</span></h1>
+        <p class="header-subtitle">Решение есть — измени свою жизнь к лучшему!</p>
+
+        <!-- Рабочая кнопка без текстовой ссылки -->
+        <a href="https://t.me/psy_stas" target="_blank" class="tg-button">
+            <div class="tg-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.25.25-.5.25l.213-3.045 5.54-5.017c.24-.213-.054-.33-.373-.118l-6.85 4.312-2.944-.92c-.642-.201-.65-.642.134-.95l11.5-4.43c.532-.2.997.12.83.931z"/></svg>
+            </div>
+            <div class="tg-text">Напиши мне и я тебе расскажу как</div>
+        </a>
     </div>
 
-    <!-- СЕКЦИЯ 2: РЕШЕНИЕ — МЕРКУРИЙ CASHFLOW -->
-    <section class="solution-section">
-        <div class="container">
-            <div class="solution-grid">
-                <div class="solution-header">
-                    <div class="solution-badge">✧ ПЕРЕЗАГРУЗКА ✧</div>
-                    <h2>Фонд Меркурий Cashflow</h2>
-                    <div class="subhead">Выход из матрицы бедности. Ежедневная финансовая свобода.</div>
-                </div>
-
-                <!-- Достоинства: главный удар — ДЕНЬГИ КАЖДЫЙ ДЕНЬ -->
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="2" y="6" width="20" height="14" rx="2" ry="2"/>
-                                <circle cx="12" cy="13" r="3"/>
-                                <line x1="4" y1="9" x2="8" y2="9"/>
-                            </svg>
-                        </div>
-                        <h3>Каждый день</h3>
-                        <p>Начисления поступают на твой счет ежесуточно. Не в конце месяца, не раз в неделю — а всегда.</p>
-                        <div class="daily-highlight">⏣ 24/7 ДЕНЬГИ ИДУТ ⏣</div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 12H4M12 4v16M4 8h16M4 16h16"/>
-                            </svg>
-                        </div>
-                        <h3>Поток без границ</h3>
-                        <p>Никаких начальников, графиков и унижений. Твой личный Cashflow работает как живой организм.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polygon points="12,6 12,12 16,14"/>
-                            </svg>
-                        </div>
-                        <h3>Технология Меркурий</h3>
-                        <p>Математика взаимопомощи, исключающая просадки. Умная система распределения ликвидности.</p>
-                    </div>
-                </div>
-
-                <!-- Блок усиления достоинства: получай деньги каждый день (крупно) -->
-                <div style="background: linear-gradient(145deg, #1f2937, #11161e); border-radius: 100px; padding: 30px 40px; text-align: center; border: 1px solid #ffd96630; margin: 30px 0;">
-                    <span style="font-size: 2rem; font-weight: 300; color: #ccc;">ГЛАВНОЕ:</span>
-                    <span style="font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #ffe484, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block;">ПОЛУЧАЙ ДЕНЬГИ КАЖДЫЙ ДЕНЬ</span>
-                    <span style="font-size: 1.3rem; color: #ffd966;">уже сегодня. без выходных. без задержек.</span>
-                </div>
-
-                <!-- Отзыв (типа социальное доказательство) -->
-                <div class="testimonial">
-                    <p>«Я боялась, что это очередной развод. Но Меркурий реально дает каждый день. Первые выплаты пошли через 4 часа после входа. Я снова дышу». </p>
-                    <div class="testimonial-author">— Елена, участник фонда 2 года</div>
-                </div>
-
-                <!-- Призыв к действию -->
-                <div class="cta-block">
-                    <button class="cta-button" onclick="alert('Произойдёт переход на защищённую страницу регистрации (в реальности — зеркало фонда)')">
-                        💫 Активировать доход
-                    </button>
-                    <div class="cta-note">✦ более 13 лет в тени ✦ система взаимных расчетов ✦</div>
-                    <div style="font-size: 0.95rem; color: #6b6b6b; max-width: 600px;">*Войдя в фонд, вы соглашаетесь с правилом 20% и принимаете механизм eCurrency как основу взаиморасчетов.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер (предупреждение, хотя в реальном лендинге его скорее всего не будет, но добавим как элемент дизайна) -->
-    <footer>
-        <div class="container">
-            <p style="color: #3a3a3a;">Меркурий Cashflow | Дмитрий Васадин | Поток — здесь и сейчас</p>
-            <p style="font-size: 0.8rem; color: #333;">🜁 Информация носит ознакомительный характер. В материалах использованы метафоры и художественные образы.</p>
-        </div>
-    </footer>
-
-    <!-- Небольшой скрипт для параллакса или свечения (чисто декоративно) -->
-    <script>
-        (function() {
-            // декоративный скрипт, меняет интенсивность свечения при движении мыши (просто для "вау-эффекта")
-            document.addEventListener('mousemove', function(e) {
-                const glow = document.querySelector('.glow');
-                const x = (e.clientX / window.innerWidth) * 100;
-                const y = (e.clientY / window.innerHeight) * 100;
-                if (glow) {
-                    glow.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255, 200, 100, 0.2) 0%, transparent 70%)`;
-                }
-            });
-        })();
-    </script>
 </body>
 </html>
