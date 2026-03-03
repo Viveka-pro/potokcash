@@ -1,462 +1,737 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Меркурий Cashflow — пассивный доход с прозрачной моделью</title>
-  <style>
-    :root {
-      --bg-1: #0f1021;
-      --bg-2: #1a2a3a;
-      --accent: #ffb703;
-      --accent-2: #fb8500;
-      --text: #f7f5f2;
-      --muted: #c9c4bd;
-      --card: rgba(255, 255, 255, 0.06);
-      --border: rgba(255, 255, 255, 0.12);
-      --shadow: rgba(0, 0, 0, 0.35);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меркурий Cashflow — Пассивный доход для частных инвесторов</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-color: #1f2937;
+            --light-text: #ffffff;
+            --muted-text: #6b7280;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-    body {
-      font-family: "Manrope", "Montserrat", "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% 10%, #1d2b3f 0%, transparent 70%),
-        radial-gradient(900px 500px at 90% 20%, #263b52 0%, transparent 65%),
-        linear-gradient(120deg, var(--bg-1), var(--bg-2));
-      min-height: 100vh;
-      line-height: 1.5;
-    }
+        body {
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-    .hero {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      align-items: center;
-    }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: rgba(255, 183, 3, 0.15);
-      border: 1px solid rgba(255, 183, 3, 0.4);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-    h1 {
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.1;
-      margin: 16px 0 16px;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    h2 {
-      font-size: clamp(26px, 4vw, 36px);
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-    h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-    p {
-      color: var(--muted);
-      font-size: 16px;
-    }
+        .cta-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
 
-    .hero p {
-      font-size: 18px;
-    }
+        .cta-header:hover {
+            background: var(--secondary-color);
+        }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 24px;
-    }
+        /* Hero Section */
+        .hero {
+            background-image: url('https://i.ibb.co/6n0999L/1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--light-text);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 28px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 13px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    .btn.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #1d1300;
-      box-shadow: 0 12px 28px var(--shadow);
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .btn.secondary {
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: transparent;
-    }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-    }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
+        .btn-primary {
+            background: var(--light-text);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    .trust-card {
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      font-size: 14px;
-      color: var(--text);
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
 
-    .section {
-      padding: 32px;
-      border-radius: 28px;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
-    }
+        .btn-secondary {
+            background: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--light-text);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
 
-    .columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+        .btn-secondary:hover {
+            background: var(--light-text);
+            color: var(--primary-color);
+        }
 
-    .card {
-      padding: 20px;
-      border-radius: 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-      counter-reset: step;
-    }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
 
-    .step {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.04);
-    }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--muted-text);
+            margin-bottom: 4rem;
+        }
 
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255, 183, 3, 0.2);
-      border: 1px solid rgba(255, 183, 3, 0.5);
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
 
-    .highlight {
-      color: var(--text);
-      font-weight: 600;
-    }
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
 
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-    .metric {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255, 183, 3, 0.12);
-      border: 1px solid rgba(255, 183, 3, 0.4);
-    }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
 
-    .metric span {
-      display: block;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+        .card p {
+            color: var(--muted-text);
+        }
 
-    .reviews {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+        /* Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
 
-    .faq {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
+        .step {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
 
-    .footer-cta {
-      text-align: center;
-      padding: 36px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(255, 183, 3, 0.18), rgba(251, 133, 0, 0.18));
-      border: 1px solid rgba(255, 183, 3, 0.4);
-    }
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
 
-    .note {
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-top: 12px;
-    }
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
 
-    @media (max-width: 600px) {
-      .page {
-        padding: 40px 18px 60px;
-      }
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
 
-      .section {
-        padding: 24px;
-      }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
 
-      .cta-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
+        .stat-label {
+            font-size: 1rem;
+            color: var(--muted-text);
+            margin-top: 0.5rem;
+        }
 
-      .btn {
-        width: 100%;
-      }
-    }
-  </style>
+        /* Testimonials */
+        .testimonials {
+            background: var(--card-bg);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: var(--bg-color);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        .testimonial-role {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--bg-color);
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--muted-text);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            background-image: url('https://i.ibb.co/6n0999L/1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--light-text);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .footer-cta h2, .footer-cta p, .footer-cta .btn-primary {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-color);
+            color: var(--light-text);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: var(--muted-text);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <main class="page">
+    <header>
+        <nav>
+            <a href="#" class="logo">Меркурий Cashflow</a>
+            <ul class="nav-links">
+                <li><a href="#about">О фонде</a></li>
+                <li><a href="#model">Модель</a></li>
+                <li><a href="#advantages">Преимущества</a></li>
+                <li><a href="#results">Результаты</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#contact" class="cta-header">Связаться</a>
+        </nav>
+    </header>
+
     <section class="hero">
-      <div>
-        <div class="badge">Фонд Меркурий Cashflow</div>
-        <h1>Пассивный доход через дисциплинированный cashflow</h1>
-        <p>
-          Инвестиционная модель, где деньги работают ежедневно: прозрачные правила, понятные шаги и контроль рисков.
-          Для частных инвесторов 25–55 лет, которые ценят устойчивость и долгую дистанцию.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="#form">Получить консультацию</a>
-          <a class="btn secondary" href="#how">Посмотреть модель</a>
+        <div class="hero-content">
+            <h1>Пассивный доход для частных инвесторов</h1>
+            <p>Инвестируйте в проверенную cashflow-модель с профессиональным управлением и прозрачной отчетностью</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Получить консультацию</a>
+                <a href="#about" class="btn-secondary">Узнать больше</a>
+            </div>
         </div>
-        <div class="trust-grid">
-          <div class="trust-card">Регулярные отчеты и прозрачная структура активов</div>
-          <div class="trust-card">Фокус на прогнозируемый денежный поток</div>
-          <div class="trust-card">Доступно инвесторам с разным опытом</div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Кратко о результате</h3>
-        <p class="highlight">
-          Стабильный cashflow формируется через диверсификацию, планирование входов и контроль волатильности.
-        </p>
-        <p>
-          Вы видите, куда направляются средства, как формируется доход, и какие действия предпринимаются для защиты капитала.
-        </p>
-      </div>
     </section>
 
-    <section class="section" id="about">
-      <h2>Фонд и основатель</h2>
-      <div class="columns">
-        <div>
-          <h3>Меркурий Cashflow</h3>
-          <p>
-            Фонд ориентирован на создание устойчивого денежного потока через комбинацию инструментов с разной
-            волатильностью. Модель строится на дисциплине, аналитике и планировании.
-          </p>
+    <section id="about">
+        <h2 class="section-title">О фонде и основателе</h2>
+        <p class="section-subtitle">Профессиональный подход к управлению активами</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Меркурий Cashflow</h3>
+                <p>Инвестиционный фонд, специализирующийся на cashflow-стратегиях. Мы работаем с качественными активами, обеспечивая стабильный пассивный доход для наших инвесторов.</p>
+            </div>
+            <div class="card">
+                <h3>Дмитрий Васадин</h3>
+                <p>Основатель фонда с более чем 10-летним опытом в инвестициях и управлении активами. Эксперт в области cashflow-стратегий и долгосрочного инвестирования.</p>
+            </div>
+            <div class="card">
+                <h3>Прозрачность</h3>
+                <p>Регулярная отчетность, открытые коммуникации и четкое понимание всех аспектов управления вашими инвестициями.</p>
+            </div>
         </div>
-        <div>
-          <h3>Дмитрий Васадин</h3>
-          <p>
-            Основатель фонда. Управляет стратегией, контролирует риск-менеджмент и лично отвечает за прозрачность
-            процессов и коммуникацию с инвесторами.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="how">
-      <h2>Как работает модель cashflow</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>Диагностика целей</h3>
-          <p>Определяем желаемый уровень пассивного дохода и комфортный горизонт инвестирования.</p>
+    <section id="model" style="background: var(--card-bg); padding: 5rem 2rem;">
+        <h2 class="section-title">Как работает модель cashflow</h2>
+        <p class="section-subtitle">Пошаговый подход к созданию пассивного дохода</p>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Анализ рынка</h3>
+                <p>Тщательный отбор активов с высокой ликвидностью и стабильной доходностью. Мы изучаем рыночные тенденции и перспективы развития.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Формирование портфеля</h3>
+                <p>Создание диверсифицированного портфеля из активов, генерирующих регулярный cashflow. Учет рисков и потенциала роста.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Активное управление</h3>
+                <p>Постоянный мониторинг портфеля, своевременная корректировка стратегии в зависимости от рыночной конъюнктуры.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Генерация дохода</h3>
+                <p>Получение регулярного пассивного дохода от управляемых активов. Стабильные выплаты инвесторам.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Реинвестирование</h3>
+                <p>Возможность реинвестирования дохода для увеличения базы капитала и роста будущих поступлений.</p>
+            </div>
         </div>
-        <div class="step">
-          <h3>Формирование портфеля</h3>
-          <p>Собираем набор инструментов с разной динамикой и прогнозируемыми выплатами.</p>
-        </div>
-        <div class="step">
-          <h3>Ритм cashflow</h3>
-          <p>Настраиваем регулярные поступления и реинвестирование для роста потока.</p>
-        </div>
-        <div class="step">
-          <h3>Контроль рисков</h3>
-          <p>Поддерживаем баланс между доходностью и устойчивостью через лимиты и ребаланс.</p>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="advantages">
-      <h2>Преимущества и отличия</h2>
-      <div class="columns">
-        <div class="card">
-          <h3>Фокус на потоке</h3>
-          <p>В отличие от спекуляций, приоритет — регулярный денежный результат, а не разовая прибыль.</p>
+    <section id="advantages">
+        <h2 class="section-title">Преимущества и отличия</h2>
+        <p class="section-subtitle">Почему выбирают Меркурий Cashflow</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Стабильность</h3>
+                <p>Работаем с проверенными активами, обеспечивающими стабильный cashflow независимо от рыночных колебаний.</p>
+            </div>
+            <div class="card">
+                <h3>Диверсификация</h3>
+                <p>Распределение рисков между различными классами активов и секторами экономики.</p>
+            </div>
+            <div class="card">
+                <h3>Профессиональное управление</h3>
+                <p>Опытная команда управляющих с успешной историей реализации cashflow-стратегий.</p>
+            </div>
+            <div class="card">
+                <h3>Прозрачность</h3>
+                <p>Полная прозрачность в управлении, регулярная отчетность и открытые коммуникации.</p>
+            </div>
+            <div class="card">
+                <h3>Долгосрочный подход</h3>
+                <p>Фокус на устойчивом росте и стабильном доходе, а не на краткосрочной спекулятивной прибыли.</p>
+            </div>
+            <div class="card">
+                <h3>Индивидуальный подход</h3>
+                <p>Учет целей и предпочтений каждого инвестора при формировании инвестиционной стратегии.</p>
+            </div>
         </div>
-        <div class="card">
-          <h3>Прозрачные правила</h3>
-          <p>Вы понимаете логику решений, структуру портфеля и сценарии действий при колебаниях рынка.</p>
-        </div>
-        <div class="card">
-          <h3>Коммуникация</h3>
-          <p>Регулярные отчеты, ответы на вопросы и ясная стратегия без сложных терминов.</p>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="metrics">
-      <h2>Показатели и результаты</h2>
-      <p>
-        Мы ориентируемся на достижимые показатели, без обещаний и без скрытых условий.
-        Динамика зависит от рыночной ситуации и выбранного горизонта.
-      </p>
-      <div class="metrics">
-        <div class="metric">
-          <span>4–8%</span>
-          Средний диапазон cashflow в квартал при сбалансированной стратегии.
+    <section id="results" style="background: var(--card-bg); padding: 5rem 2rem;">
+        <h2 class="section-title">Показатели и результаты</h2>
+        <p class="section-subtitle">Наши достижения в цифрах</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <div class="stat-label">Лет на рынке</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">200+</span>
+                <div class="stat-label">Инвесторов</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <div class="stat-label">Проектов реализовано</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <div class="stat-label">Успешных сделок</div>
+            </div>
         </div>
-        <div class="metric">
-          <span>12–24 мес.</span>
-          Рекомендуемый горизонт для устойчивого результата.
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Стабильный рост</h3>
+                <p>Наш портфель показывает устойчивый рост на протяжении нескольких лет, несмотря на рыночные колебания.</p>
+            </div>
+            <div class="card">
+                <h3>Регулярные выплаты</h3>
+                <p>Инвесторы получают стабильные выплаты по результатам деятельности фонда.</p>
+            </div>
+            <div class="card">
+                <h3>Консервативный подход</h3>
+                <p>Мы придерживаемся консервативной стратегии, минимизируя риски и обеспечивая сохранность капитала.</p>
+            </div>
         </div>
-        <div class="metric">
-          <span>24/7</span>
-          Доступ к ключевым отчетам и статусу портфеля.
-        </div>
-      </div>
-      <p class="note">Фактические результаты могут отличаться и зависят от рыночных условий.</p>
     </section>
 
-    <section class="section" id="risks">
-      <h2>Риски и прозрачность</h2>
-      <div class="columns">
-        <div>
-          <h3>Что важно учитывать</h3>
-          <p>
-            Инвестиции связаны с рисками. Доходность не фиксирована и может меняться в зависимости от рынка.
-          </p>
+    <section id="risks" style="padding: 5rem 2rem;">
+        <h2 class="section-title">Риски и прозрачность</h2>
+        <p class="section-subtitle">Честный подход к управлению рисками</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Рыночные риски</h3>
+                <p>Как и любые инвестиции, наша стратегия подвержена рыночным колебаниям. Мы минимизируем эти риски через диверсификацию.</p>
+            </div>
+            <div class="card">
+                <h3>Управление рисками</h3>
+                <p>Системный подход к оценке и управлению рисками. Регулярный аудит и пересмотр стратегии.</p>
+            </div>
+            <div class="card">
+                <h3>Прозрачная отчетность</h3>
+                <p>Полная прозрачность в вопросах управления активами. Регулярная отчетность для инвесторов.</p>
+            </div>
         </div>
-        <div>
-          <h3>Как мы работаем с рисками</h3>
-          <p>
-            Используем лимиты, диверсификацию и сценарный анализ, чтобы снижать влияние волатильности.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="reviews">
-      <h2>Отзывы инвесторов</h2>
-      <div class="reviews">
-        <div class="card">
-          <h3>Алексей, 34</h3>
-          <p>«Начал с небольшой суммы, получил понятный план и регулярную связь. Чувствую контроль и спокойствие.»</p>
+    <section id="reviews" class="testimonials">
+        <h2 class="section-title">Отзывы инвесторов</h2>
+        <p class="section-subtitle">Что говорят наши клиенты</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Инвестирую в Меркурий Cashflow уже более двух лет. Радует стабильность выплат и профессиональный подход команды. Наконец-то нашел надежный способ получения пассивного дохода."</p>
+                <div class="testimonial-author">Андрей Петров</div>
+                <div class="testimonial-role">Предприниматель, 38 лет</div>
+            </div>
+            <div class="testimonial">
+                <p>"Дмитрий и его команда действительно знают свое дело. Прозрачная отчетность, четкая стратегия и реальные результаты. Рекомендую тем, кто ищет долгосрочные инвестиции."</p>
+                <div class="testimonial-author">Елена Сидорова</div>
+                <div class="testimonial-role">Финансовый директор, 45 лет</div>
+            </div>
+            <div class="testimonial">
+                <p>"Начинал с небольшой суммы, но результаты впечатлили. Сейчас увеличил вложения. Важно, что всегда можно связаться с управляющими и получить развернутый ответ на любой вопрос."</p>
+                <div class="testimonial-author">Сергей Иванов</div>
+                <div class="testimonial-role">IT-специалист, 32 года</div>
+            </div>
         </div>
-        <div class="card">
-          <h3>Марина, 42</h3>
-          <p>«Понравилось, что нет давления и пустых обещаний. Все прозрачно, цифры и шаги ясные.»</p>
-        </div>
-        <div class="card">
-          <h3>Сергей, 51</h3>
-          <p>«Искал пассивный доход на горизонте 2 лет. Понравилась системность и дисциплина в управлении.»</p>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="faq">
-      <h2>FAQ</h2>
-      <div class="faq">
-        <div class="card">
-          <h3>Какая минимальная сумма входа?</h3>
-          <p>Зависит от выбранной стратегии. Обычно начинаем с комфортного бюджета клиента.</p>
+    <section id="faq" style="padding: 5rem 2rem;">
+        <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <p class="section-subtitle">Ответы на ваши вопросы</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Какой минимальный размер инвестиций?</div>
+                <div class="faq-answer">Минимальный размер инвестиций составляет 500 000 рублей. Это позволяет эффективно диверсифицировать риски.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Как часто производятся выплаты?</div>
+                <div class="faq-answer">Выплаты производятся ежеквартально по результатам деятельности фонда. Точные даты указаны в инвестиционном договоре.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Можно ли вывести средства досрочно?</div>
+                <div class="faq-answer">Да, возможно досрочное расторжение договора с соблюдением установленных сроков уведомления. Подробности уточняйте у вашего персонального менеджера.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Какие налоги я должен платить?</div>
+                <div class="faq-answer">Налоговая нагрузка зависит от вашей налоговой резиденции и выбранной формы инвестирования. Мы предоставляем всю необходимую отчетность для самостоятельной сдачи налоговой декларации.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Как я могу контролировать свои инвестиции?</div>
+                <div class="faq-answer">Вы получаете регулярную отчетность о состоянии портфеля, а также можете в любое время связаться с вашим персональным менеджером для получения информации.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Что происходит с активами в кризис?</div>
+                <div class="faq-answer">Наша стратегия направлена на работу в различных рыночных условиях. Мы выбираем активы с высокой ликвидностью и стабильным cashflow, что снижает риски в периоды нестабильности.</div>
+            </div>
         </div>
-        <div class="card">
-          <h3>Как часто приходят отчеты?</h3>
-          <p>Базовый формат — ежемесячные отчеты, при необходимости доступны промежуточные обновления.</p>
-        </div>
-        <div class="card">
-          <h3>Можно ли вывести часть средств?</h3>
-          <p>Да, мы заранее обсуждаем условия ликвидности и планируем выводы, чтобы не нарушать стратегию.</p>
-        </div>
-        <div class="card">
-          <h3>Куда именно инвестируются средства?</h3>
-          <p>Состав портфеля раскрывается в отчетах с пояснением логики выбора инструментов.</p>
-        </div>
-        <div class="card">
-          <h3>Как вы снижаете риски?</h3>
-          <p>Диверсификация, лимиты, ребаланс и регулярный анализ сценариев.</p>
-        </div>
-        <div class="card">
-          <h3>Что нужно для старта?</h3>
-          <p>Короткая консультация, согласование целей и подбор подходящей стратегии.</p>
-        </div>
-      </div>
     </section>
 
-    <section class="footer-cta" id="form">
-      <h2>Готовы обсудить ваш личный cashflow?</h2>
-      <p>
-        Получите персональный разбор и план действий, чтобы деньги работали на вас регулярно и прозрачно.
-      </p>
-      <div class="cta-row" style="justify-content: center;">
-        <a class="btn primary" href="https://t.me/mercury_cashflow" target="_blank" rel="noopener">Написать в Telegram</a>
-        <a class="btn secondary" href="mailto:info@mercury-cashflow.ru">Запросить презентацию</a>
-      </div>
-      <div class="note">Мы не используем агрессивные обещания. Важнее — дисциплина, стратегия и долгосрочный подход.</div>
+    <section id="contact" class="footer-cta">
+        <h2>Готовы начать инвестировать?</h2>
+        <p>Получите персональную консультацию и узнайте больше о возможностях инвестирования</p>
+        <a href="https://t.me/psy_stas" class="btn-primary">Связаться в Telegram</a>
     </section>
-  </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Меркурий Cashflow</h3>
+                <p>Профессиональное управление вашими инвестициями для стабильного пассивного дохода.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul class="footer-links">
+                    <li><a href="https://t.me/psy_stas">Telegram</a></li>
+                    <li><a href="mailto:info@mercury-cashflow.com">Email</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Информация</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">О фонде</a></li>
+                    <li><a href="#model">Инвестиционная модель</a></li>
+                    <li><a href="#risks">Риски</a></li>
+                    <li><a href="#docs">Документы</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Меркурий Cashflow. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
