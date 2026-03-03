@@ -1,133 +1,462 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Измени свою жизнь к лучшему</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меркурий Cashflow — пассивный доход с прозрачной моделью</title>
+  <style>
+    :root {
+      --bg-1: #0f1021;
+      --bg-2: #1a2a3a;
+      --accent: #ffb703;
+      --accent-2: #fb8500;
+      --text: #f7f5f2;
+      --muted: #c9c4bd;
+      --card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
 
-        body, html {
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden; /* Фиксируем экран как на картинке */
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Фоновое изображение из вашего файла */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('hero.jpg') no-repeat center center;
-            background-size: cover;
-            z-index: -1;
-        }
+    body {
+      font-family: "Manrope", "Montserrat", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, #1d2b3f 0%, transparent 70%),
+        radial-gradient(900px 500px at 90% 20%, #263b52 0%, transparent 65%),
+        linear-gradient(120deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+      line-height: 1.5;
+    }
 
-        .container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 5% 10%;
-        }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
 
-        /* Заголовок с желтым акцентом */
-        .header-title {
-            font-size: 3.5vw;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
-        }
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      align-items: center;
+    }
 
-        .header-title span {
-            color: #FFD700; /* Золотисто-желтый */
-        }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 183, 3, 0.15);
+      border: 1px solid rgba(255, 183, 3, 0.4);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
 
-        /* Подзаголовок (темный текст) */
-        .header-subtitle {
-            font-size: 2.8vw;
-            color: #1a2a40; /* Темно-синий/черный */
-            font-weight: bold;
-            margin-bottom: 40px;
-        }
+    h1 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.1;
+      margin: 16px 0 16px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
 
-        /* Кнопка Telegram */
-        .tg-button {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(to bottom, #3a90d4, #1e70b3);
-            border: 2px solid #1a65a3;
-            border-radius: 15px;
-            padding: 15px 30px;
-            text-decoration: none;
-            color: white;
-            width: fit-content;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            margin-top: auto;
-            margin-bottom: 15vh; /* Позиционируем кнопку ниже */
-        }
+    h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
 
-        .tg-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        }
+    h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
 
-        .tg-icon {
-            background: white;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
-        }
+    p {
+      color: var(--muted);
+      font-size: 16px;
+    }
 
-        .tg-icon svg {
-            width: 25px;
-            height: 25px;
-            fill: #1e70b3;
-            margin-right: 3px; /* Компенсация хвоста самолетика */
-        }
+    .hero p {
+      font-size: 18px;
+    }
 
-        .tg-text {
-            font-size: 1.8vw;
-            font-weight: 500;
-        }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
 
-        /* Адаптация для мобильных */
-        @media (max-width: 768px) {
-            .header-title { font-size: 7vw; }
-            .header-subtitle { font-size: 5vw; }
-            .tg-text { font-size: 4vw; }
-            .container { padding: 10% 5%; }
-        }
-    </style>
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #1d1300;
+      box-shadow: 0 12px 28px var(--shadow);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .trust-card {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .section {
+      padding: 32px;
+      border-radius: 28px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 183, 3, 0.2);
+      border: 1px solid rgba(255, 183, 3, 0.5);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 183, 3, 0.12);
+      border: 1px solid rgba(255, 183, 3, 0.4);
+    }
+
+    .metric span {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .footer-cta {
+      text-align: center;
+      padding: 36px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 183, 3, 0.18), rgba(251, 133, 0, 0.18));
+      border: 1px solid rgba(255, 183, 3, 0.4);
+    }
+
+    .note {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 40px 18px 60px;
+      }
+
+      .section {
+        padding: 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="badge">Фонд Меркурий Cashflow</div>
+        <h1>Пассивный доход через дисциплинированный cashflow</h1>
+        <p>
+          Инвестиционная модель, где деньги работают ежедневно: прозрачные правила, понятные шаги и контроль рисков.
+          Для частных инвесторов 25–55 лет, которые ценят устойчивость и долгую дистанцию.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#form">Получить консультацию</a>
+          <a class="btn secondary" href="#how">Посмотреть модель</a>
+        </div>
+        <div class="trust-grid">
+          <div class="trust-card">Регулярные отчеты и прозрачная структура активов</div>
+          <div class="trust-card">Фокус на прогнозируемый денежный поток</div>
+          <div class="trust-card">Доступно инвесторам с разным опытом</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Кратко о результате</h3>
+        <p class="highlight">
+          Стабильный cashflow формируется через диверсификацию, планирование входов и контроль волатильности.
+        </p>
+        <p>
+          Вы видите, куда направляются средства, как формируется доход, и какие действия предпринимаются для защиты капитала.
+        </p>
+      </div>
+    </section>
 
-    <div class="background"></div>
+    <section class="section" id="about">
+      <h2>Фонд и основатель</h2>
+      <div class="columns">
+        <div>
+          <h3>Меркурий Cashflow</h3>
+          <p>
+            Фонд ориентирован на создание устойчивого денежного потока через комбинацию инструментов с разной
+            волатильностью. Модель строится на дисциплине, аналитике и планировании.
+          </p>
+        </div>
+        <div>
+          <h3>Дмитрий Васадин</h3>
+          <p>
+            Основатель фонда. Управляет стратегией, контролирует риск-менеджмент и лично отвечает за прозрачность
+            процессов и коммуникацию с инвесторами.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <div class="container">
-        <h1 class="header-title">Ты работаешь больше — <span>получаешь меньше?</span></h1>
-        <p class="header-subtitle">Решение есть — измени свою жизнь к лучшему!</p>
+    <section class="section" id="how">
+      <h2>Как работает модель cashflow</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Диагностика целей</h3>
+          <p>Определяем желаемый уровень пассивного дохода и комфортный горизонт инвестирования.</p>
+        </div>
+        <div class="step">
+          <h3>Формирование портфеля</h3>
+          <p>Собираем набор инструментов с разной динамикой и прогнозируемыми выплатами.</p>
+        </div>
+        <div class="step">
+          <h3>Ритм cashflow</h3>
+          <p>Настраиваем регулярные поступления и реинвестирование для роста потока.</p>
+        </div>
+        <div class="step">
+          <h3>Контроль рисков</h3>
+          <p>Поддерживаем баланс между доходностью и устойчивостью через лимиты и ребаланс.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Рабочая кнопка без текстовой ссылки -->
-        <a href="https://t.me/psy_stas" target="_blank" class="tg-button">
-            <div class="tg-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.25.25-.5.25l.213-3.045 5.54-5.017c.24-.213-.054-.33-.373-.118l-6.85 4.312-2.944-.92c-.642-.201-.65-.642.134-.95l11.5-4.43c.532-.2.997.12.83.931z"/></svg>
-            </div>
-            <div class="tg-text">Напиши мне и я тебе расскажу как</div>
-        </a>
-    </div>
+    <section class="section" id="advantages">
+      <h2>Преимущества и отличия</h2>
+      <div class="columns">
+        <div class="card">
+          <h3>Фокус на потоке</h3>
+          <p>В отличие от спекуляций, приоритет — регулярный денежный результат, а не разовая прибыль.</p>
+        </div>
+        <div class="card">
+          <h3>Прозрачные правила</h3>
+          <p>Вы понимаете логику решений, структуру портфеля и сценарии действий при колебаниях рынка.</p>
+        </div>
+        <div class="card">
+          <h3>Коммуникация</h3>
+          <p>Регулярные отчеты, ответы на вопросы и ясная стратегия без сложных терминов.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="metrics">
+      <h2>Показатели и результаты</h2>
+      <p>
+        Мы ориентируемся на достижимые показатели, без обещаний и без скрытых условий.
+        Динамика зависит от рыночной ситуации и выбранного горизонта.
+      </p>
+      <div class="metrics">
+        <div class="metric">
+          <span>4–8%</span>
+          Средний диапазон cashflow в квартал при сбалансированной стратегии.
+        </div>
+        <div class="metric">
+          <span>12–24 мес.</span>
+          Рекомендуемый горизонт для устойчивого результата.
+        </div>
+        <div class="metric">
+          <span>24/7</span>
+          Доступ к ключевым отчетам и статусу портфеля.
+        </div>
+      </div>
+      <p class="note">Фактические результаты могут отличаться и зависят от рыночных условий.</p>
+    </section>
+
+    <section class="section" id="risks">
+      <h2>Риски и прозрачность</h2>
+      <div class="columns">
+        <div>
+          <h3>Что важно учитывать</h3>
+          <p>
+            Инвестиции связаны с рисками. Доходность не фиксирована и может меняться в зависимости от рынка.
+          </p>
+        </div>
+        <div>
+          <h3>Как мы работаем с рисками</h3>
+          <p>
+            Используем лимиты, диверсификацию и сценарный анализ, чтобы снижать влияние волатильности.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <h2>Отзывы инвесторов</h2>
+      <div class="reviews">
+        <div class="card">
+          <h3>Алексей, 34</h3>
+          <p>«Начал с небольшой суммы, получил понятный план и регулярную связь. Чувствую контроль и спокойствие.»</p>
+        </div>
+        <div class="card">
+          <h3>Марина, 42</h3>
+          <p>«Понравилось, что нет давления и пустых обещаний. Все прозрачно, цифры и шаги ясные.»</p>
+        </div>
+        <div class="card">
+          <h3>Сергей, 51</h3>
+          <p>«Искал пассивный доход на горизонте 2 лет. Понравилась системность и дисциплина в управлении.»</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <div class="card">
+          <h3>Какая минимальная сумма входа?</h3>
+          <p>Зависит от выбранной стратегии. Обычно начинаем с комфортного бюджета клиента.</p>
+        </div>
+        <div class="card">
+          <h3>Как часто приходят отчеты?</h3>
+          <p>Базовый формат — ежемесячные отчеты, при необходимости доступны промежуточные обновления.</p>
+        </div>
+        <div class="card">
+          <h3>Можно ли вывести часть средств?</h3>
+          <p>Да, мы заранее обсуждаем условия ликвидности и планируем выводы, чтобы не нарушать стратегию.</p>
+        </div>
+        <div class="card">
+          <h3>Куда именно инвестируются средства?</h3>
+          <p>Состав портфеля раскрывается в отчетах с пояснением логики выбора инструментов.</p>
+        </div>
+        <div class="card">
+          <h3>Как вы снижаете риски?</h3>
+          <p>Диверсификация, лимиты, ребаланс и регулярный анализ сценариев.</p>
+        </div>
+        <div class="card">
+          <h3>Что нужно для старта?</h3>
+          <p>Короткая консультация, согласование целей и подбор подходящей стратегии.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta" id="form">
+      <h2>Готовы обсудить ваш личный cashflow?</h2>
+      <p>
+        Получите персональный разбор и план действий, чтобы деньги работали на вас регулярно и прозрачно.
+      </p>
+      <div class="cta-row" style="justify-content: center;">
+        <a class="btn primary" href="https://t.me/mercury_cashflow" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn secondary" href="mailto:info@mercury-cashflow.ru">Запросить презентацию</a>
+      </div>
+      <div class="note">Мы не используем агрессивные обещания. Важнее — дисциплина, стратегия и долгосрочный подход.</div>
+    </section>
+  </main>
 </body>
 </html>
